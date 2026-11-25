@@ -1,0 +1,35 @@
+# pm2_config.yml — Process monitoring for PM2 on VPS
+apps:
+  - name: "tiktok-bot-master"
+    script: "main.py"
+    cwd: "/home/yourserver/project456"  # Update to your actual VPS path
+    interpreter: "python3"
+    env:
+      process_type: fork
+      watch_mode: false
+      autorestart: true
+      max_restarts: 5          # Kill if it keeps crashing
+      autorestart_delay: 5000  # 5 seconds before restart attempt
+      launch_scheduler: true    # Start the scheduler on boot
+    
+    # Cron/Schedule settings
+    cron_restart: "0 8 * * *"  # Restart at 8 AM daily
+    cron: "0 0 1 1 * *"         # Run cron check every minute
+    watch: ["/home/yourserver/project456/src"]
+    
+    # Log rotation
+    log: "/var/log/tiktok_bot/output.log"
+    error_log: "/var/log/tiktok_bot/error.log"
+    out_log: "/var/log/tiktok_bot/output.log"
+    combine_log: true
+    
+    # Production
+    env_production:
+      APP_ENV: "production"
+      AUTOPROCESS_TIME: "08:00"
+      LOG_LEVEL: "info"
+    
+    env_development:
+      APP_ENV: "development"
+      AUTOPROCESS_TIME: "08:00"
+      LOG_LEVEL: "debug"
