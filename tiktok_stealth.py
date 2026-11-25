@@ -1,6 +1,6 @@
 import asyncio
 from playwright.async_api import async_playwright
-from playwright_stealth import stealth, stealth_evasions
+import playwright_stealth
 from playwright.async_api import create_context
 import os
 
@@ -17,7 +17,7 @@ class TikTokStealthBrowser:
         """Buka browser Chrome dengan mode stealth."""
         self.playwright = await async_playwright().start()
         self.browser = await self.playwright.chromium.launch(
-            headless=False,                # Off biar terlihat natural (on-screen)
+            headless=true,                # Off biar terlihat natural (on-screen)
             args=[
                 "--disable-blink-features=AutomationControlled",
                 "--no-sandbox",
@@ -33,7 +33,6 @@ class TikTokStealthBrowser:
             self.context = await self.browser.new_context(
                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
                 viewport={"width": 1280, "height": 800},
-                accept_storage_and_cookies=True,
             )
             # Loadan cookies lama
             await self.context.set_cookies(self._read_cookies())
@@ -43,7 +42,7 @@ class TikTokStealthBrowser:
             )
 
         self.page = await self.context.new_page()
-        await stealth(self.page)  # Apply stealth paranbiaranan nggakan terdetect
+        await playwright_stealth.stealth(self.page)
 
     async def _read_cookies(self):
         """Bacaan cookies lamaAN untukan session persistence."""
