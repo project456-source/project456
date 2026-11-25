@@ -3,7 +3,7 @@ import random
 import logging
 from datetime import datetime
 from typing import List
-from python-dotenv import load_dotenv
+from dotenv import load_dotenv
 import os
 
 from database import DatabaseManager
