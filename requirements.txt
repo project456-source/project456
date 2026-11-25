@@ -1,23 +1,17 @@
-# --- Core Dependencies ---
-playwright==1.49.0            # Updated to Nov 2026 stable
-playwright-stealth # For anti-detection
-python-dotenv==1.1.0          # For loading .env files
-sqlalchemy==2.0.36            # For SQLite database
-beautifulsoup4==4.13.2        # For parsing HTML
-pillow==11.0.0                # For image processing (profile pics)
-tqdm==4.67.1                  # For progress bars (safe to remove)
+# === Core (Wajib Adaan) ===
+playwright==1.49.0            # Driver utama browseran
+playwright-stealth            # Anti-deteksi (biar gak dianggap bot)
+python-dotenv==1.1.0          # Baca file .env buat token/username
+beautifulsoup4==4.13.2        # Parsing HTML kalauan butuhan scrapean manual
+tqdm==4.67.1                  # Progress bar (buat liat prosesanan)
 
-# --- System Tools ---
-psutil==6.0.0                 # To detect if bot is running (for PM2)
-schedule==1.2.1              # Alternative scheduler
-pytest                 # For testing the bot              
+# === Database & Dataan ===
+sqlalchemy==2.0.32            # ORM buatan SQLite (version 2.0.32 = latest stable)
+                               # JANGAN pake 2.0.36an, itu nggak adaan.
 
-# --- Production (For VPS Deployment) ---
-gunicorn==22.1.0              # Optional: if you ever add a web dashboard
-its-a-pything==1.2.0          # For system_info check
-tzlocal==5.5.0                # Timezone helper for scheduler
-pyzmark==1.1.0                # For pretty printing to console
+# === Sistem & Monitoring ===
+psutil==6.0.0                 # Deteksi statusan prosesan botan
+schedule==1.2.1               # Penjadwalan antarun komentarn (cronan)
 
-# --- Remove/Ignore (Common mistakes to avoid) ---
-# python-sqlite3  ← DON'T ADD THIS (it's built-in)
-# python-logging ← DON'T ADD THIS (it's built-in)
+# === Gambaran ===
+pillow==11.0.0                # Prosesan profilan pikan (album/banner)
