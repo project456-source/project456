@@ -27,15 +27,15 @@ jobs:
           async def test():
               browser = None
               try:
-                  print("Trying to launch browser...")
-                  browser = await async_playwright().chromium.launch()
-                  print("Browser launched successfully! ✅")
+                  print("🚀 Trying to launch browser...")
+                  async with async_playwright() as p:
+                      browser = await p.chromium.launch()
+                      print("Chromium launched successfully! ✅")
+                  
+                  print("Test passed! 🥳")
               except Exception as e:
-                  print(f"Launch failed! ❌\n{e}")
+                  print(f"FAILED! ❌\nError: {e}")
                   exit(1)
-              finally:
-                  if browser:
-                      await browser.close()
 
           if __name__ == "__main__":
               asyncio.run(test())
