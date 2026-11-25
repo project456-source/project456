@@ -1,6 +1,6 @@
 import asyncio
 from playwright.async_api import async_playwright
-from playwright_stealth import stealth_js_parameters
+from playwright_stealth import stealth_evasions
 from playwright.async_api import create_context
 import os
 
