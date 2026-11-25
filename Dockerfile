@@ -44,6 +44,7 @@ RUN playwright install chromium
 COPY . .
 
 # Set environment variables
+ENV PATH="/home/container/.local/bin:${PATH}"
 ENV NODE_ENV=production
 ENV PYTHONUNBUFFERED=1
 
