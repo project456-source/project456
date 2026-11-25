@@ -1,0 +1,25 @@
+# --- Core Dependencies ---
+playwright==1.49.0            # Updated to Nov 2026 stable
+playwright-stealth==1.3.2    # For anti-detection
+playwright-color-converter==0.1.0
+python-dotenv==1.1.0          # For loading .env files
+sqlalchemy==2.0.36            # For SQLite database
+beautifulsoup4==4.13.2        # For parsing HTML
+pillow==11.0.0                # For image processing (profile pics)
+tqdm==4.67.1                  # For progress bars (safe to remove)
+
+# --- System Tools ---
+psutil==6.0.0                 # To detect if bot is running (for PM2)
+schedule==1.2.1              # Alternative scheduler
+pytest==8.6.0                 # For testing the bot
+pathlib==1.2.1                # For clean path handling
+
+# --- Production (For VPS Deployment) ---
+gunicorn==22.1.0              # Optional: if you ever add a web dashboard
+its-a-pything==1.2.0          # For system_info check
+tzlocal==5.5.0                # Timezone helper for scheduler
+pyzmark==1.1.0                # For pretty printing to console
+
+# --- Remove/Ignore (Common mistakes to avoid) ---
+# python-sqlite3  ← DON'T ADD THIS (it's built-in)
+# python-logging ← DON'T ADD THIS (it's built-in)
