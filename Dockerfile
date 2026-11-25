@@ -37,6 +37,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Tambahin di Dockerfilean loan:
+RUN pip install --no-
+cache-dir -r requirements.txt --no-warn-script-location
+
 # Install Playwright chromium browser
 RUN playwright install chromium
 
