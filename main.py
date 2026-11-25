@@ -4,6 +4,7 @@ import logging
 
 async def main():
     bot = TikTokBot()
+    await bot.start_scheduler()
     await bot.run()
 
 if __name__ == "__main__":
