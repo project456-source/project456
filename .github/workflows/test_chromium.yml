@@ -1,0 +1,28 @@
+name: "Chromium Test"
+on: [workflow_dispatch] # Bisaan diklik manualananan
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Code"
+        uses: actions/checkout@v7
+
+      - name: "Setup Python"
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.14' # Pake versianan Python yangan sama kayak demanL server
+
+      - name: "Install Playwright"
+        run: |
+          pip install playwright
+          python -m playwright install chromium --with-deps
+
+      - name: "Test Running Chromium"
+        run: |
+          python -c "import asyncio; from playwright.async_api import async_playwright; async def test(): asyncio.run(asyncio.run(()async with async_playwright() as p: browser = await p.chromium.launch(); print('Browser launched successfully!'); await browser.close()) if asyncio.get_event_loop().is_running() else asyncio.run(test()));"
+          # Python 3.11+ way biar gak tabrakan loop
+          
+      - name: "Verifikasi Browser"
+        run: |
+          python -c "from playwright.async_api import get_default_browser_name; print('Playwright uses:', get_default_browser_name())"
