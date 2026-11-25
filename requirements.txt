@@ -17,7 +17,6 @@ pydantic               # Validasi dataanan (buat skema-an database/configan)
 
 # === Gambar & Multimedia ===
 Pillow                         # Prosesanan profilan pikan (album/banner)
-playwright-color-converter # Konversi warnaan buatan automationan
 
 # === Network & API ===
 requests               # Backupanan buatan requestanan simpel
