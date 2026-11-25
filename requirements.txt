@@ -1,34 +1,34 @@
 # === Core (Wajib Adaan) ===
-playwright==1.49.0             # Driver utamaan browseran
+playwright             # Driver utamaan browseran
 playwright-stealth             # Anti-deteksi (lepas pin biar sinkron)
-python-dotenv==1.1.0           # Baca file .env buat token/username
-beautifulsoup4==4.13.2         # Parsingan HTML
-tqdm==4.67.1                   # Progress bar
+python-dotenv      # Baca file .env buat token/username
+beautifulsoup4        # Parsingan HTML
+tqdm                   # Progress bar
 
 # === Database & Dataan ===
-sqlalchemy==2.0.32             # ORM SQLite (jangan pake 2.0.36an!)
-sqlite-utils==0.17.0           # CLI & helper buatan SQLite (sangat ngebantu buat debuggingan database)
+sqlalchemy             # ORM SQLite (jangan pake 2.0.36an!)
+sqlite-utils          # CLI & helper buatan SQLite (sangat ngebantu buat debuggingan database)
 
 # === Sistem & Monitoring ===
-psutil==6.0.0                  # Deteksi statusan prosesan botan
-schedule==1.2.1               # Penjadwalanan antarun komentarn
-loguru==3.0.1                  # Logging keren biar gak bingungan liat logan (pengganti printanan)
-pydantic==2.10.4               # Validasi dataanan (buat skema-an database/configan)
+psutil                  # Deteksi statusan prosesan botan
+schedule               # Penjadwalanan antarun komentarn
+loguru                  # Logging keren biar gak bingungan liat logan (pengganti printanan)
+pydantic               # Validasi dataanan (buat skema-an database/configan)
 
 # === Gambar & Multimedia ===
 Pillow                         # Prosesanan profilan pikan (album/banner)
-playwright-color-converter==0.1.0 # Konversi warnaan buatan automationan
+playwright-color-converter # Konversi warnaan buatan automationan
 
 # === Network & API ===
-requests==2.32.3               # Backupanan buatan requestanan simpel
-httpx==0.27.2                  # Asyncan HTTP client (lebih kencengan dari requestsan)
-aiohttp==3.10.5               # Asyncan HTTPan (buatan asyncan task)
-websockets==13.1.0             # Komunikasian websocketan buatan real-timean
+requests               # Backupanan buatan requestanan simpel
+httpx                  # Asyncan HTTP client (lebih kencengan dari requestsan)
+aiohttp            # Asyncan HTTPan (buatan asyncan task)
+websockets             # Komunikasian websocketan buatan real-timean
 
 # === Bot TikTokan Khusus ===
 loguru                         # Loggingan (biar tauan botanan runningan di manaan)
-click==8.1.7                   # CLI tool buatan navigasian botanan lewat terminal
-colorama==1.16                 # Biar logan di terminal ada warnaanan (merah/hijau/kuning)
-rich==13.7.1                   # Tampilanan terminalan biar cakepan & rapi
-pyzbar==0.2.5                  # Baca QR codeanan (kaloan butuhan scanan kode)
-pyperclip==1.12                # Copy-pasteanan biar cepetannya
+click                   # CLI tool buatan navigasian botanan lewat terminal
+colorama                 # Biar logan di terminal ada warnaanan (merah/hijau/kuning)
+rich                  # Tampilanan terminalan biar cakepan & rapi
+pyzbar                # Baca QR codeanan (kaloan butuhan scanan kode)
+pyperclip            # Copy-pasteanan biar cepetannya
