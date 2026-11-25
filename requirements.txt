@@ -14,4 +14,4 @@ psutil==6.0.0                 # Deteksi statusan prosesan botan
 schedule==1.2.1               # Penjadwalan antarun komentarn (cronan)
 
 # === Gambaran ===
-pillow==11.0.0                # Prosesan profilan pikan (album/banner)
+pillow                # Prosesan profilan pikan (album/banner)
