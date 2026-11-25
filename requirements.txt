@@ -10,7 +10,7 @@ tqdm==4.67.1                  # For progress bars (safe to remove)
 # --- System Tools ---
 psutil==6.0.0                 # To detect if bot is running (for PM2)
 schedule==1.2.1              # Alternative scheduler
-pytest==8.6.0                 # For testing the bot
+pytest                 # For testing the bot
 pathlib==1.2.1                # For clean path handling
 
 # --- Production (For VPS Deployment) ---
