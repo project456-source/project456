@@ -26,6 +26,27 @@ class TikTokBot:
         self.browser = TikTokStealthBrowser()
         self.is_running = False
         self.daily_count = 0
+        # TAMBAHAN DI bot.py — Letakkan di dalam class TikTokBot dekat __init__
+    
+    async def start_scheduler(self):
+        """Jadwalananan utamaan bot biaran jalanan di jam-jam tertentuan sajaan."""
+        from scheduler import BotScheduler
+        scheduler = BotScheduler()
+        
+        logger.info(f"📅 BOT SCHEDULE INITIALIZED: {os.getenv('AUTOPROCESS_TIME', '08:00')}")
+        
+        while True:
+            self.is_running = True
+            status = await scheduler.get_next_action()
+            
+            if status['action'] == 'scan':
+                logger.info(f"🚀 SCAN MODE ACTIVE! (Duration: {status['duration']} min)")
+                await self._scan_videos_workflow()  # Jalankan scanan
+                logger.info(f"💤 SCAN FINISHED. Auto-sleep for now.")
+            else:
+                logger.info(f"🌙 SLEEP MODE ACTIVE. Next check in 60 min.")
+            
+            await asyncio.sleep(3600) # Cek tiap jam
         
         # Konfigurasi darian .env
         self.keywords = [k.strip().lower() for k in os.getenv('KEYWORDS', '').split(',')]
