@@ -1,5 +1,5 @@
 name: "Chromium Test"
-on: [workflow_dispatch] # Bisaan diklik manualananan
+on: [workflow_dispatch]
 
 jobs:
   test:
@@ -11,7 +11,7 @@ jobs:
       - name: "Setup Python"
         uses: actions/setup-python@v7
         with:
-          python-version: '3.14' # Pake versianan Python yangan sama kayak demanL server
+          python-version: '3.14'
 
       - name: "Install Playwright"
         run: |
@@ -20,9 +20,24 @@ jobs:
 
       - name: "Test Running Chromium"
         run: |
-          python -c "import asyncio; from playwright.async_api import async_playwright; async def test(): asyncio.run(asyncio.run(()async with async_playwright() as p: browser = await p.chromium.launch(); print('Browser launched successfully!'); await browser.close()) if asyncio.get_event_loop().is_running() else asyncio.run(test()));"
-          # Python 3.11+ way biar gak tabrakan loop
-          
-      - name: "Verifikasi Browser"
-        run: |
-          python -c "from playwright.async_api import get_default_browser_name; print('Playwright uses:', get_default_browser_name())"
+          cat << 'EOF' > test_browser.py
+          import asyncio
+          from playwright.async_api import async_playwright
+
+          async def test():
+              browser = None
+              try:
+                  print("Trying to launch browser...")
+                  browser = await async_playwright().chromium.launch()
+                  print("Browser launched successfully! ✅")
+              except Exception as e:
+                  print(f"Launch failed! ❌\n{e}")
+                  exit(1)
+              finally:
+                  if browser:
+                      await browser.close()
+
+          if __name__ == "__main__":
+              asyncio.run(test())
+          EOF
+          python test_browser.py
