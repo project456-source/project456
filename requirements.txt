@@ -1,7 +1,6 @@
 # --- Core Dependencies ---
 playwright==1.49.0            # Updated to Nov 2026 stable
 playwright-stealth # For anti-detection
-playwright-color-converter==0.1.0
 python-dotenv==1.1.0          # For loading .env files
 sqlalchemy==2.0.36            # For SQLite database
 beautifulsoup4==4.13.2        # For parsing HTML
