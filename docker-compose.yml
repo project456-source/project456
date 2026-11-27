@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  tiktok-bot:
+    container_name: tiktok_bot_project456
+    image: python:3.12-slim  # Latest stable Python runtime
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    # Run in background
+    restart: always
+    
+    # Environmental variables (loaded from .env automatically)
+    env_file:
+      - .env
+    
+    # Volumes for persistent data
+    volumes:
+      - ./session:/app/session          # Session/cookies stay between restarts
+      - ./database:/app/database        # SQLite database stays between restarts
+      - /var/log/tiktok_bot:/app/logs   # Logs kept on host VPS
+    
+    # Prevent containers from writing to host storage
+    read_only: false
+    
+    # Running flags
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"        # Rotate logs every 10MB
+        max-files: "5"         # Keep only 5 log files
+    
+    labels:
+      com.project456.role: bot
+      com.project456.service: tiktok-comment-bot
+    
+    # Network isolation
+    networks:
+      - bot_network
+    
+    environment:
+      - NODE_ENV=production
+      - AUTOPROCESS_TIME=08:00  # Start time (8 AM)
+      - AUTO_SLEEP=22:00       # Sleep time (10 PM)
+
+# Shared network
+networks:
+  bot_network:
+    driver: bridge
+    internal: true
